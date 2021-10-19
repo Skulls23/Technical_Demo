@@ -25,7 +25,6 @@ public class PlayerInput : MonoBehaviour
         //RUN
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
-            animator.StopPlayback();
             animator.SetInteger("forward", 2);
             transform.Translate(0, 0, 1 * moveSpeed * Time.deltaTime);
         }
@@ -73,8 +72,7 @@ public class PlayerInput : MonoBehaviour
         /////////////
 
 
-        if (Input.GetKey(KeyCode.S) && !(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A)      ||
-                                         Input.GetKey(KeyCode.D) || Input.GetKeyUp(KeyCode.Space)))
+        if (Input.GetKey(KeyCode.S))
         {
             animator.SetInteger("forward", -1);
             transform.Translate(0, 0, -1 * (moveSpeed / 2) * Time.deltaTime);
