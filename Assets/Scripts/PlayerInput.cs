@@ -25,15 +25,16 @@ public class PlayerInput : MonoBehaviour
         //RUN
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
+            animator.StopPlayback();
             animator.SetInteger("forward", 2);
-            transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
+            transform.Translate(0, 0, 1 * moveSpeed * Time.deltaTime);
         }
 
         //WALK
         if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.LeftShift))
         {
             animator.SetInteger("forward", 1);
-            transform.Translate(0, 0, Input.GetAxis("Vertical") * (moveSpeed/2) * Time.deltaTime);
+            transform.Translate(0, 0, 1 * (moveSpeed/2) * Time.deltaTime);
         }
 
         if (Input.GetKeyUp(KeyCode.W))
@@ -65,14 +66,32 @@ public class PlayerInput : MonoBehaviour
         {
             animator.SetInteger("turn", 0);
         }
-        
+
+
+        /////////////
+        //  BLOCK  //
+        /////////////
+
+
+        if (Input.GetKey(KeyCode.S) && !(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A)      ||
+                                         Input.GetKey(KeyCode.D) || Input.GetKeyUp(KeyCode.Space)))
+        {
+            animator.SetInteger("forward", -1);
+            transform.Translate(0, 0, -1 * (moveSpeed / 2) * Time.deltaTime);
+        }
+
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            animator.SetInteger("forward", 0);
+        }
+
 
         ////////////
         //  JUMP  //
         ////////////
 
 
-        if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump"))
         {
             transform.Translate(0, Input.GetAxis("Jump") * moveSpeed * Time.deltaTime, 0);
         }
