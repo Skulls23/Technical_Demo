@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
+    //Function to do an action when hitting a collider
+    void OnTriggerEnter(Collider other)
     {
-     
-    }
-
-    // Cyclic call
-    void Update()
-    {
-
+        if(other.gameObject.CompareTag("Collectibles"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 }

@@ -26,17 +26,17 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
             animator.SetInteger("forward", 2);
-            transform.Translate(0, 0, 1 * moveSpeed * Time.deltaTime);
+            transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
         }
 
         //WALK
         if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.LeftShift))
         {
             animator.SetInteger("forward", 1);
-            transform.Translate(0, 0, 1 * (moveSpeed/2) * Time.deltaTime);
+            transform.Translate(0, 0, Input.GetAxis("Vertical") * (moveSpeed/2) * Time.deltaTime);
         }
 
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
         {
             animator.SetInteger("forward", 0);
         }
@@ -75,12 +75,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             animator.SetInteger("forward", -1);
-            transform.Translate(0, 0, -1 * (moveSpeed / 2) * Time.deltaTime);
-        }
-
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            animator.SetInteger("forward", 0);
+            transform.Translate(0, 0, Input.GetAxis("Vertical") * (moveSpeed / 2) * Time.deltaTime);
         }
 
 
