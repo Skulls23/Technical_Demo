@@ -7,16 +7,8 @@ public class PlayerInput : MonoBehaviour
     public float moveSpeed = 5;
     public float rotationSpeed = 0.5f;
 
-    private Animator animator;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        animator = transform.GetComponent<Animator>();
-    }
-
     // Cyclic call
-    void Update()
+    void FixedUpdate()
     {
         ///////////////
         //  FORWARD  //
@@ -24,22 +16,11 @@ public class PlayerInput : MonoBehaviour
 
         //RUN
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
-        {
-            animator.SetInteger("forward", 2);
             transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
-        }
 
         //WALK
         if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.LeftShift))
-        {
-            animator.SetInteger("forward", 1);
             transform.Translate(0, 0, Input.GetAxis("Vertical") * (moveSpeed/2) * Time.deltaTime);
-        }
-
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
-        {
-            animator.SetInteger("forward", 0);
-        }
 
 
         ////////////
@@ -47,36 +28,17 @@ public class PlayerInput : MonoBehaviour
         ////////////
 
 
-        if (Input.GetKey(KeyCode.A))
-        {
-
-            animator.SetInteger("turn", 1);
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             transform.Rotate(0.0f, Input.GetAxis("Horizontal") * rotationSpeed, 0.0f);
-        }
 
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            animator.SetInteger("turn", 2);
-            transform.Rotate(0.0f, Input.GetAxis("Horizontal") * rotationSpeed, 0.0f);
-        }
-
-        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
-        {
-            animator.SetInteger("turn", 0);
-        }
-
-
-        /////////////
-        //  BLOCK  //
-        /////////////
+        ////////////////
+        //  BACKWARD  //
+        ////////////////
 
 
         if (Input.GetKey(KeyCode.S))
-        {
-            animator.SetInteger("forward", -1);
             transform.Translate(0, 0, Input.GetAxis("Vertical") * (moveSpeed / 2) * Time.deltaTime);
-        }
 
 
         ////////////
@@ -84,10 +46,8 @@ public class PlayerInput : MonoBehaviour
         ////////////
 
 
-            if (Input.GetButton("Jump"))
-        {
+        if (Input.GetButton("Jump"))
             transform.Translate(0, Input.GetAxis("Jump") * moveSpeed * Time.deltaTime, 0);
-        }
 
     }
 }

@@ -7,7 +7,7 @@ public class SkullRotator : MonoBehaviour
     public float rotationSpeed;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(0, 1 * rotationSpeed * Time.deltaTime, 0);
     }
