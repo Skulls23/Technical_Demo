@@ -61,7 +61,28 @@ public class PlayerAnimation : MonoBehaviour
         ////////////
 
 
-        
+        if (Input.GetKeyDown(KeyCode.Space) && !(Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.Mouse1)))
+            animator.Play("Jump");
 
+
+        //////////////
+        //  ATTACK  //
+        //////////////
+
+
+        if (Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("turn") == 0 && animator.GetInteger("forward") == 0)
+            animator.Play("Attack");
+
+
+        //////////////
+        //  SHIELD  //
+        //////////////
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && animator.GetInteger("turn") == 0 && animator.GetInteger("forward") == 0)
+            animator.SetBool("shield", true);
+
+        if(Input.GetKeyUp(KeyCode.Mouse1))
+            animator.SetBool("shield", false);
     }
 }

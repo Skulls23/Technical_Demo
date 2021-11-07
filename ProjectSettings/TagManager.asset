@@ -5,14 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collectibles
+  - Enemy
+  - EnemyWeapon
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Dog
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

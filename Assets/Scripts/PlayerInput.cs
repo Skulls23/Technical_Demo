@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public PlayerController pc;
     public float moveSpeed = 5;
     public float rotationSpeed = 0.5f;
 
@@ -41,13 +42,16 @@ public class PlayerInput : MonoBehaviour
             transform.Translate(0, 0, Input.GetAxis("Vertical") * (moveSpeed / 2) * Time.deltaTime);
 
 
-        ////////////
-        //  JUMP  //
-        ////////////
+        //////////////
+        //  SHIELD  //
+        //////////////
 
 
-        if (Input.GetButton("Jump"))
-            transform.Translate(0, Input.GetAxis("Jump") * moveSpeed * Time.deltaTime, 0);
-
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.W) &&
+                                                  Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)))
+            pc.IsShielded = true;
+        if (Input.GetKeyUp(KeyCode.Mouse1) && !(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.W) &&
+                                                Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)))
+            pc.IsShielded = false;
     }
 }
