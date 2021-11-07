@@ -61,7 +61,7 @@ public class PlayerAnimation : MonoBehaviour
         ////////////
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && !(Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.Mouse1)))
+        if (Input.GetKeyDown(KeyCode.Space) && !(Input.GetKey(KeyCode.Mouse0) && animator.GetBool("shield")))
             animator.Play("Jump");
 
 
