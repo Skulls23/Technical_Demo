@@ -1,2 +1,2 @@
 # Explosivo
-A simple game made to show our <i>impressive skills</i> to a teacher after few hours of courses
+A simple game made to show my <i>impressive skills</i> to my teacher after few hours of courses
