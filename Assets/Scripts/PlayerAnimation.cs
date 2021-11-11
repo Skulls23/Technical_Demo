@@ -70,8 +70,18 @@ public class PlayerAnimation : MonoBehaviour
         //////////////
 
 
-        if (Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("turn") == 0 && animator.GetInteger("forward") == 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetInteger("turn") == 0 && animator.GetInteger("forward") == 0)
+        {
             animator.Play("Attack");
+
+            RaycastHit hit;
+            //start from this, go forward to a max distance of 2
+            if (Physics.Raycast(transform.position, transform.rotation * Vector3.forward, out hit, 2f))
+            {   
+                transform.GetComponent<DamageHandler>().DoDamage(hit);
+            }
+            
+        }
 
 
         //////////////

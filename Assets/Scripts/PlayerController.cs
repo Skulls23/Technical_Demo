@@ -20,6 +20,12 @@ public class PlayerController : HealthHandler
         countText.SetText(count + "/" + MAX_COUNT);
     }
 
+    public void ArcherKilled()
+    {
+        archerKilled = true;
+        ChangeRule();
+    }
+
     public bool IsShielded {get; set;}
 
     //Function to do an action when hitting a collider
@@ -30,7 +36,8 @@ public class PlayerController : HealthHandler
             other.gameObject.SetActive(false);
             count++;
             countText.SetText(count + "/" + MAX_COUNT);
-            ChangeRule();
+            if(count == MAX_COUNT)
+                ChangeRule();
         }
     }
 
@@ -38,7 +45,9 @@ public class PlayerController : HealthHandler
     {
         if (count == MAX_COUNT && !archerKilled)
             ruleText.SetText("Kill the archer");
-        else if (count == MAX_COUNT && archerKilled)
-            ruleText.SetText("you finished the wonderful tutorial");
+        else if (count < MAX_COUNT && archerKilled)
+            ruleText.SetText("Catch the 6 skulls");
+        else
+            ruleText.SetText("You've finished this wonderful technical demo");
     }
 }
