@@ -26,6 +26,14 @@ public class DayNightCycle : MonoBehaviour
             t += Time.deltaTime;
             float yRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360.0f;
             transform.rotation = Quaternion.Euler(new Vector3(yRotation, 0, 0));
+            if(transform.rotation.x < 0 && GetComponent<Light>().intensity >= 0)
+            {
+                GetComponent<Light>().intensity -= 100;
+            }
+            else if(transform.rotation.x > 0 && GetComponent<Light>().intensity <= 20000)
+            {
+                GetComponent<Light>().intensity += 100;
+            }
             yield return null;
         }
         isActive = false;
