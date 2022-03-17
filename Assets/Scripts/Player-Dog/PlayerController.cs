@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerController : HealthHandler
+public class PlayerController : MonoBehaviour
 {
     public TextMeshProUGUI countText;
     public TextMeshProUGUI ruleText;
