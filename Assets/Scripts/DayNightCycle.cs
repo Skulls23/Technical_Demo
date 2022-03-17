@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
+    [SerializeField] private float duration;
     bool isActive = false;
 
     void FixedUpdate()
     {
         if(!isActive)
         {
-            StartCoroutine(Rotate(10f));
+            StartCoroutine(Rotate(duration));
             isActive = true;
         }
             
