@@ -32,7 +32,8 @@ public class DamageOnPlayerSplash : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        DamageOverTime = false;
+        if (other.CompareTag("Player"))
+            DamageOverTime = false;
     }
 
     private void TakeDamageOverTime()

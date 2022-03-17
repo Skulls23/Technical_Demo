@@ -32,7 +32,8 @@ public class CorruptionOnPlayerSplash : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        CorruptionOverTime = false;
+        if (other.CompareTag("Player"))
+            CorruptionOverTime = false;
     }
 
     private void TakeCorruptionOverTime()
