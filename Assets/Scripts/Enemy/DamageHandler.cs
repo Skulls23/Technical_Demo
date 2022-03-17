@@ -8,12 +8,18 @@ public class DamageHandler : MonoBehaviour
 
     [SerializeField] private static int DAMAGE_DONE = 10;
 
+    [SerializeField] private UnityEngine.VFX.VisualEffect particle;
+
+    private void Start()
+    {
+        particle.Stop();
+    }
 
     public void DoDamage(RaycastHit rch)
     {
-        Debug.Log(rch.collider.gameObject.tag);
         if (rch.collider.gameObject.CompareTag("Enemy"))
         {
+            particle.Play();
             animator = rch.collider.gameObject.GetComponent<Animator>();
 
             rch.collider.gameObject.GetComponent<ArcherController>().Health -= DAMAGE_DONE;
