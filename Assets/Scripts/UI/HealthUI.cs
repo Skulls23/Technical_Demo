@@ -6,11 +6,11 @@ using UnityEngine.UI;
 /// <summary>
 /// This is the UI script for the health.
 /// It has to be on a UI frame
-/// It is called by the HealthManager inside the Jeune Celte
+/// It is called by the HealthManager inside the Player
 /// </summary>
 public class HealthUI : MonoBehaviour
 {
-    [SerializeField] private GameObject jeuneCelte;
+    [SerializeField] private GameObject player;
     [SerializeField] private int imageXSize;
     [SerializeField] private int imageYSize;
 
@@ -54,7 +54,7 @@ public class HealthUI : MonoBehaviour
 
         imageList = new List<GameObject>();
 
-        for (int i = 0; i < jeuneCelte.GetComponent<Health>().GetHealthMax(); i++)
+        for (int i = 0; i < player.GetComponent<Health>().GetHealthMax(); i++)
         {
             imageList.Add(new GameObject("Container " + i));
 
@@ -84,7 +84,7 @@ public class HealthUI : MonoBehaviour
 
         imageList = new List<GameObject>();
 
-        for (int i = 0; i < jeuneCelte.GetComponent<Health>().GetHealthMax(); i++)
+        for (int i = 0; i < player.GetComponent<Health>().GetHealthMax(); i++)
         {
             imageList.Add(new GameObject("Container " + i));
 
